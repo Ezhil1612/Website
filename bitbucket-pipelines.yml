@@ -1,0 +1,69 @@
+image: atlassian/default-image:3  ## Use the default Bitbucket Pipeline image
+
+pipelines:
+ branches:
+  main:
+  - step:
+      name: Deploy to Server
+      script:
+        # Use environment variables defined in repository settings
+
+
+
+        ## Determine the branch and set the appropriate deployment variables
+            # Set deployment variables for the master branch
+        - export MASTER_SERVER_IP="${MASTER_SERVER_IP}"
+        - export MASTER_DEPLOY_PATH="${MASTER_DEPLOY_PATH}"
+        - export MASTER_DEPLOY_USER="${MASTER_DEPLOY_USER}"
+        - export BITBUCKET_USERNAME="${BITBUCKET_USERNAME}"
+        - export BITBUCKET_APP_PASSWORD="${BITBUCKET_APP_PASSWORD}"
+        - export MASTER_GIT_BRANCH="main"
+        - echo "Deploying to Staging server..."
+
+        - echo "Branch $MASTER_GIT_BRANCH is configured for deployment."
+
+        # SSH into the server and perform deployment tasks
+        - echo "Connecting to server and deploying..."
+        - |
+          ssh -o StrictHostKeyChecking=no $MASTER_DEPLOY_USER@$MASTER_SERVER_IP << EOF
+            set -x
+            echo "Connected to server."
+            
+                            
+            #cd $MASTER_DEPLOY_PATH/
+      
+            
+            # Pull the Latest Changes Form Origin Branch
+            echo "pull the latest changes..."
+            
+            cd $MASTER_DEPLOY_PATH/ 
+            sudo rm -r website_project      
+
+            sudo git init
+            sudo git clone --branch $MASTER_GIT_BRANCH --single-branch https://$BITBUCKET_USERNAME:$BITBUCKET_APP_PASSWORD@bitbucket.org/nbmediatech/website_project.git
+          
+          
+           
+            cd $MASTER_DEPLOY_PATH/website_project
+
+            sudo python3 -m venv /home/ubuntu/website/website_project/venv
+            source /home/ubuntu/website/website_project/venv/bin/activate
+            sudo chmod -R 777 *
+            pip install djangorestframework
+            pip install djangorestframework-simplejwt
+            pip install mysqlclient
+            pip install channels
+            pip install fcm-django
+            python -m pip install Pillow
+            pip install twilio
+            # python manage.py runserver 0.0.0.0:8000
+            sudo supervisorctl reread
+            sudo supervisorctl update
+            sudo supervisorctl restart django-app
+            sudo supervisorctl status
+
+            exit
+          EOF
+
+        # Indicate pipeline completion
+        - echo "Pipeline completed."

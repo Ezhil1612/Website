@@ -1,0 +1,159 @@
+# ###Byte-compiled files
+
+__pycache__/
+
+*.py[cod]
+
+*$py.class
+ 
+# Virtual environment
+#gffgb
+
+env/
+.vscode
+__pycache__
+venv/
+
+ENV/
+
+.venv/
+
+.ENV/
+ 
+# Environment variables
+
+
+*.env
+ 
+# Logs and databases
+
+*.log
+
+*.sqlite3
+ 
+# Jupyter Notebook checkpoints
+
+.ipynb_checkpoints
+ 
+# macOS and Windows system files
+
+.DS_Store
+
+
+*.log
+
+
+*.sqlite3
+ 
+# Jupyter Notebook checkpoints
+
+
+.ipynb_checkpoints
+ 
+# macOS and Windows system files
+
+
+.DS_Store
+
+
+Thumbs.db
+ 
+# Test coverage and profiling data
+
+.coverage
+
+*.cover
+
+.hypothesis/
+
+*.mo
+
+*.gcov
+
+
+.coverage
+
+
+*.cover
+
+
+.hypothesis/
+
+
+*.mo
+
+
+*.gcov
+
+
+*.pyo
+ 
+# MyPy and Pyright type checker output
+
+.mypy_cache/
+
+
+.mypy_cache/
+
+
+.pyright/
+ 
+# Pytest cache
+
+
+.pytest_cache/
+ 
+# Temporary files
+
+*.temp
+
+
+*.temp
+
+
+*.tmp
+ 
+# Build artifacts
+
+build/
+
+dist/
+
+*.egg-info/
+
+
+build/
+
+
+dist/
+
+
+*.egg-info/
+
+
+.eggs/
+ 
+# C extensions
+
+
+*.so
+ 
+# PyInstaller
+
+
+*.spec
+ 
+# IDE configurations
+
+.vscode/
+
+ 
+vidhvaachatapp/__pycache__/admin.cpython-312.pyc
+vidhvaachatapp/__pycache__/models.cpython-312.pyc
+vidhvaachatapp/__pycache__/serializers.cpython-312.pyc
+vidhvaachatapp/__pycache__/urls.cpython-312.pyc
+vidhvaachatapp/__pycache__/views.cpython-312.pyc
+
+.vscode/
+
+ 
